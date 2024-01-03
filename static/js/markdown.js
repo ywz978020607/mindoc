@@ -472,6 +472,14 @@ $(function () {
             layer.close(index);
             layer.msg(editormdLocales[lang].loadDocFailed);
         });
+    
+        ​// add: 编辑时自动缩起左侧
+        var $then = $("#manualEditorContainer");
+        var left = parseInt($then.css("left"));
+        window.editorContainerLeft = left;
+        $then.css("left", "0");
+        window.editor.resize();
+        // add done.
     };
 
     /**
