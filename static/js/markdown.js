@@ -474,11 +474,17 @@ $(function () {
         });
     
         ​// add: 编辑时自动缩起左侧
-        var $then = $("#manualEditorContainer");
-        var left = parseInt($then.css("left"));
-        window.editorContainerLeft = left;
-        $then.css("left", "0");
-        window.editor.resize();
+        $("#manualCategory").toggle(0, "swing", function () {
+            var $then = $("#manualEditorContainer");
+            var left = parseInt($then.css("left"));
+            if (left > 0) {
+                window.editorContainerLeft = left;
+                $then.css("left", "0");
+            } else {
+                $then.css("left", window.editorContainerLeft + "px");
+            }
+            window.editor.resize();
+        });
         // add done.
     };
 
